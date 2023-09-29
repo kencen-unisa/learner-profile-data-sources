@@ -1,0 +1,22 @@
+{
+  "name": "learner-profile-data-sources",
+  "version": "0.1.0",
+  "description": "Connect multiple data sources to the Google Cloud Learning Platform to build Learner Profiles.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kencen-unisa/learner-profile-data-sources.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kencen-unisa/learner-profile-data-sources/issues"
+  },
+  "homepage": "https://github.com/kencen-unisa/learner-profile-data-sources#readme",
+  "engines": {
+    "node": ">=18.12.0"
+  }
+}
