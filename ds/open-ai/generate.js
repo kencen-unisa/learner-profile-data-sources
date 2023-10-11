@@ -1,17 +1,15 @@
 const service = require ('../../services/open-ai')
 
-getSyntheticLearnerObjects(2)///////
-async function getSyntheticLearnerObjects(numResults = 3) {
+async function getSyntheticLearnerObject(first_name="John") {
     // let prompt = `Please generate synthetic data for demographics in JSON array format. I need ${numResults} examples in structure like {uuid:"5a9e0b49-b029-4813-8a1b-ec7eb5536577", first_name:"Mickey", last_name:"Mouse", phone:"0422 356 942"}. JSON response:`
-    let prompt = `Can you generate synthetic data for demographics please. I need ${numResults} examples in structure like 
+    let prompt = `Can you generate synthetic data for demographics please. The object structure should be like 
         {
-            "uuid": "5a9e0b49-b029-4813-8a1b-ec7eb5536577",
             "first_name": "John",
             "middle_name": "Michael",
             "last_name": "Doe",
             "suffix": "",
             "prefix": "",
-            "preferred_name": "Johnny Doe",
+            "preferred_name": "Johnny",
             "preferred_first_name": "Johnny",
             "preferred_middle_name": "Michael",
             "preferred_last_name": "Doe",
@@ -63,10 +61,20 @@ async function getSyntheticLearnerObjects(numResults = 3) {
             "organisation_email_id": "jhon.doe@foobar.com",
             "affiliation": ""
         } 
+    first_name should be ${first_name}  
+    country_ansi_code is a number equal to or above 10000 
+    Please make up demographic and alter field values
+    
     JSON response: `//<-- without this phrase, reply includes "Sure! Here's ...." etc text along with JSON !
     
     let retval = await service.callChatCompletionAPI(prompt)
-    console.log(retval)/////////
+    // console.log(".......")/////////
+    // console.log(retval)/////////
+    // console.log(".......")/////////
+
     return retval
 }
 
+module.exports = {
+    getSyntheticLearnerObject,
+}

@@ -2,8 +2,6 @@ const path = require('path')
 require('dotenv').config({path: path.resolve(__dirname, '../.env')})
 
 const { OpenAI } = require('openai');
-const { copyFileSync } = require('fs');
-const { constants } = require('buffer');
 
 const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY
@@ -19,13 +17,14 @@ async function callChatCompletionAPI(prompt) {
             {role: "user", content: prompt}
         ],
     })
-    console.log(completion)////////
+    // console.log(completion)////////
     // for(let i=0; i<completion.choices.length; i++) {////////
     //     console.log("--- choices ["+i+"] ---")////////
     //     console.log(completion.choices[i])///////
     // }//////////
-
-    let retval = JSON.parse(completion.choices[0].message.content)
+    console.log(completion.choices[0].message.content)//////////
+    console.log("=============")//////////
+    let retval = JSON.parse(completion.choices[0].message.content.trim())
     return retval
 }//end callChatCompletionAPI()
 
