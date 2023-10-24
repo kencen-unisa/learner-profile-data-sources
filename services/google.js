@@ -75,6 +75,29 @@ function getAllLearners() {
     })
 }
 
+async function getLearnerByUuid(uuid) {
+    let url = `${api_url}${learner_microservice}/learner/${uuid}`
+    return new Promise(async(resolve, reject)=>{
+        let token = await getToken()
+        axios({
+            method: 'get',
+            url: url,
+            headers: {'Authorization': `Bearer ${token}`}
+        })
+        .then(function(res){
+            if(res.data.success===true){
+                resolve (res.data.data)
+            }
+            else{
+                resolve({error: res.data.message})
+            }
+        })
+        .catch(function(err){
+            resolve({error: err})
+        })
+    })
+}
+
 /**
  * 
  * @param {*} obj {first_name:"", email:""}
@@ -173,6 +196,7 @@ function updateLearner(obj){
 module.exports = {
     getAllLearners,
     searchLearner,
+    getLearnerByUuid,
     saveLearner,
     deleteLearner,
     updateLearner,

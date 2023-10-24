@@ -62,6 +62,11 @@ class Learner extends Model{
         return res
     }
 
+    static async findByUuid(uuid) {
+        let res = await api.getLearnerByUuid(uuid)
+        return res
+    }
+
     async create(){
         let res = await api.saveLearner(this)
         return res

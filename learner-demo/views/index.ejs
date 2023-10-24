@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+
+    <h1><%= title %></h1>
+    <select id="learner-select" class="form-select">
+        <% if(selected_learner) { %>
+            <option>-- Select --</option>
+        <% } else { %>
+            <option selected>-- Select --</option>
+        <% } %>
+        <% for(let i=0; i<all_learners.length; i++) { %>
+            <% if(selected_learner && all_learners[i].uuid===selected_learner.uuid){ %>
+                <option value="<%= all_learners[i].uuid %>" selected><%= all_learners[i].name %></option>
+            <% } else { %>
+                <option value="<%= all_learners[i].uuid %>"><%= all_learners[i].name %></option>
+            <% } %>
+        <% } %>
+    </select>
+
+    <div id="learner-info" class="mt-4 primary">
+        <% if (selected_learner){ %>
+            <!-- <%- JSON.stringify(selected_learner) %> -->
+
+            <div class="row mt-2">
+                <div class="col-2">
+                    First Name
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.first_name %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Middle Name
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.middle_name %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Last Name
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.last_name %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Suffix
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.suffix %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Prefix
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.prefix %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Preferred Name
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.preferred_name %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Preferred First Name
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.preferred_first_name %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Preferred Middle Name
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.preferred_middle_name %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Preferred Last Name
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.preferred_last_name %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Preferred Name Type
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.preferred_name_type %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Preferred Pronoun
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.preferred_pronoun %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Student Identifier
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.student_identifier %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Student Identification System
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.student_identification_system %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Personal Information Verification
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.personal_information_verification %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Personal Information Type
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.personal_information_type %>
+                </div>
+            </div>
+            <div class="mt-2">&nbsp;</div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Address Type
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.address_type %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Street Number and Name
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.street_number_and_name %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Apartment Room or Suite Number
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.apartment_room_or_suite_number %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    City
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.city %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    State Abbreviation
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.state_abbreviation %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Postal Code
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.postal_code %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Country Name
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.country_name %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Country Code
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.country_code %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Latitude
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.latitude %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Longitude
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.longitude %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Country ANSI Code
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.country_ansi_code %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Do Not Publish Address
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.address_do_not_publish_indicator %>
+                </div>
+            </div>
+            <div class="mt-2">&nbsp;</div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Mobile Number Type
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.phone_number.mobile.phone_number_type %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Mobile Number is Primary 
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.phone_number.mobile.primary_phone_number_indicator %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Mobile Number
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.phone_number.mobile.phone_number %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Do Not Publish Mobile Number
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.phone_number.mobile.phone_do_not_publish_indicator %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Mobile Number Listed Status
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.phone_number.mobile.phone_number_listed_status %>
+                </div>
+            </div>
+            <div class="mt-2">&nbsp;</div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Telephone Number Type
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.phone_number.telephone.phone_number_type %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Telephone Number is Primary 
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.phone_number.telephone.primary_phone_number_indicator %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Telephone Number
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.phone_number.telephone.phone_number %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Do Not Publish Telephone Number
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.phone_number.telephone.phone_do_not_publish_indicator %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Telephone Number Listed Status
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.phone_number.telephone.phone_number_listed_status %>
+                </div>
+            </div>
+            <div class="mt-2">&nbsp;</div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Email Address Type
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.email_address_type %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Email Address
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.email_address %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Do Not Publish Email Address
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.email_do_not_publish_indicator %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Backup Email Address
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.backup_email_address %>
+                </div>
+            </div>
+            <div class="mt-2">&nbsp;</div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Birth date
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.birth_date %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Gender
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.gender %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Country of Birth Code
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.country_of_birth_code %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Ethnicity
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.ethnicity %>
+                </div>
+            </div>
+            <div class="mt-2">&nbsp;</div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Organisation Email ID
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.organization_email_id %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Employer ID
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.employer_id %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Affiliation
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.affliation %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Employer
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.employer %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Employer Email
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.employer_email %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    UUID
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.uuid %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Archived
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.is_archived %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Created Time
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.created_time %>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-2">
+                    Last Modified Time
+                </div>
+                <div class="col-10">
+                    <%= selected_learner.last_modified_time %>
+                </div>
+            </div>
+
+
+        <% } %>
+    </div>
+  </body>
+
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+        $("#learner-select").change(function() {
+            let uuid = $(this).val()
+            let curr_url = window.location.href
+            let page_url = curr_url.split("?")[0]
+            url = `${page_url}?uuid=${uuid}`
+            // console.log(url)
+            window.location.href = url
+        })
+    })
+  </script>
+</html>
